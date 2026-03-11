@@ -225,3 +225,47 @@ margin-top: -18px;
 .feed-home .feed-img img{
   width: 120px;
 }
+
+.create-post form{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  gap: 45px;
+  margin-top: 20px;
+}
+
+.create-post input{
+  padding: 12px 15px;
+  border: none;
+}
+
+.create-post input:focus{
+  padding: 12px 15px;
+  outline: none;
+}
+
+
+.create-nav{
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  color: blue;
+  cursor: pointer;
+}
+
+.create-nav a{
+  text-decoration: none;
+  color: #333;
+  color: #333;
+  
+}
+
+.create-post form button{
+  padding: 8px 12px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  width: 30%;
+}

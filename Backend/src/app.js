@@ -11,6 +11,8 @@ const upload = multer({storage:multer.memoryStorage()})
 
 app.post('/post',upload.single('image') ,async (req,res)=>{
 
+
+
  const result = await uploadFile(req.file.buffer)
 
  await postModel.create({

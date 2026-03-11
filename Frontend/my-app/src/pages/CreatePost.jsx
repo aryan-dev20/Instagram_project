@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from '../Components/Footer'
 import axios from 'axios'
 
+
 const CreatePost = () => {
+
+  const [next , setNext] = useState(1)
+  const [image , setImage]= useState(null)
   
   const handleSubmit=(e)=>{
 
@@ -16,21 +20,64 @@ const CreatePost = () => {
     })
 
     .catch(()=>{
-      alert('rerer')
+      alert('Something went wrong....')
     })
   }
 
+  const handleImage=(e)=>{
+    setImage(URL.createObjectURL(e.target.files[0]))
+  }
+
   return (
+    <div className='create-post'>
+   
+
+   <nav className='create-nav'>
     <div>
+      {next===1 &&(
+       <a href="/">Cancel</a>
+      )}
 
-   <form onSubmit={handleSubmit}>
-    <h3>Add Post</h3>
-   <input type="file" name='image' />
-   <input type="text" name='caption' placeholder='caption..' />
-   <button type='submit'>Submit</button>
+      {next ===2 &&(
+      <a onClick={()=>{setNext(1)}}>Back</a>
+      )}
+      
+    </div>
+
+    <div>
+      {next===1 &&(
+        <>
+      <div onClick={()=>{setNext(2)}}>
+      Next
+      </div>
+        </>
+      )}
+
+    </div>
 
 
 
+   </nav>
+
+   <form onSubmit={handleSubmit}  encType="multipart/form-data">
+    
+    {next===1 &&(
+       <>
+       <h3>Select Image</h3>
+       <img style={{width:'200px' , borderRadius:'20px'}} src={image} alt="" />
+      <input type="file" name='image' onChange={handleImage} />
+      </>
+    )}
+   
+    {next ===2 &&(
+      <>
+    <img style={{width:'200px' , borderRadius:'20px'}} src={image} alt="" />
+    <input type="text" name='caption' placeholder='Caption here..' />
+    <button type='submit'>Upload</button>
+    </>
+    )}
+
+   
    </form>
 
 
