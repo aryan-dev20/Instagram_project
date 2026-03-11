@@ -1,0 +1,227 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,body{
+  width: 100%;
+  height: 100%;
+  
+}
+
+
+@font-face {
+  font-family: 'Billabong';
+  src: url('./assets/fonts/Billabong.otf') format('truetype');
+}
+
+
+.navbar-section .navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: white;
+
+}
+
+.navbar-section .logo{
+  color: #1c1c1c ;
+  text-decoration: none;
+  font-size: 36px;
+  font-family: 'Billabong';
+  font-weight:500;
+ 
+}
+.navbar-section .navbar .right{
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-section .navbar .noti-icon img{
+  width: 20px;
+  height: 20px;
+}
+
+.navbar-section .navbar .mess-icon img{
+  width: 20px;
+  height: 20px;
+}
+.instagram-home{
+  margin-top: 70px;
+}
+
+@keyframes popup{
+  0%{
+    transform: scale(0);
+    opacity: 0;
+  }
+  100%{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.instagram-home .story-pop{
+animation: popup  0.4s ease-in-out;
+backdrop-filter: blur(10px); /* blur background */
+  
+}
+
+
+.footer-section{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: white;
+}
+
+.footer-section img{
+  width: 25px;
+  height:25px;
+}
+
+.footer-section .icon{
+  padding: 6px 15px;
+}
+
+.footer-section .icon:focus{
+  background-color: rgba(128, 128, 128, 0.095);
+  padding: 6px 15px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+ .story{
+  display: flex;
+  gap: 10px;
+  margin-left: 18px;
+  margin-right: 18px;
+  margin-top: 80px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  overflow-x:scroll;
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.instagram-home .story::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.d-story{
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh ;
+  max-width: 400px;  /* Never go bigger than this */
+  border-radius: 10px;
+  
+
+}
+
+.semi-nav{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 20px;
+}
+
+.semi-nav .middle h1{
+  font-family: monospace;
+  font-size: 20px;
+}
+
+.semi-nav .left img{
+  width: 20px;
+}
+
+.semi-nav .right img{
+  width: 20px;
+}
+
+.feed-detail{
+  display: flex;
+  padding: 20px;
+  
+}
+
+.feed-detail .list{
+  display: flex;
+  gap: 30px;
+  margin-left: 30px;
+  margin-top: 30px;
+  
+}
+
+.feed-detail .list .count{
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: -18px;
+}
+
+.feed-detail button {
+   width: 100%;
+   padding: 6px 12px;
+   margin-left: 20px;
+   margin-top: 20px;
+   border: 1px solid #ddd;
+   outline: none;
+   border-radius: 20px;
+}
+
+
+
+.feed-detail img{
+  width: 90px ;
+  height: 90px ;
+  background-position: center;
+  background-size: cover;
+  border-radius: 60px;
+  margin-bottom: 10px;
+}
+
+.feed-home .switch-button{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.feed-home .switch-button img {
+  width: 20px;
+  
+}
+
+.feed-home .feed-img {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 1px;
+  align-items: center;
+  width: 100%;
+}
+
+.feed-home .feed-img img{
+  width: 120px;
+}
