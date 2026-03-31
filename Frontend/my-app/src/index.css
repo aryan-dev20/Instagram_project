@@ -238,6 +238,8 @@ margin-top: -18px;
 .create-post input{
   padding: 12px 15px;
   border: none;
+  display: flex;
+  
 }
 
 .create-post input:focus{
@@ -257,8 +259,6 @@ margin-top: -18px;
 .create-nav a{
   text-decoration: none;
   color: #333;
-  color: #333;
-  
 }
 
 .create-post form button{

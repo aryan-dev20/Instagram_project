@@ -1,87 +1,74 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Footer from '../Components/Footer'
-import axios from 'axios'
-
+import { useState } from 'react'
 
 const CreatePost = () => {
 
-  const [next , setNext] = useState(1)
-  const [image , setImage]= useState(null)
-  
-  const handleSubmit=(e)=>{
+const [value , setValue]= useState(1)
+const [viewImg , setViewImg] = useState(null)
 
-    e.preventDefault();
-
-    const formData = new FormData(e.target)
-    axios.post('http://localhost:3000/post' , formData)
-
-    .then((res)=>{
-      alert('posted')
-    })
-
-    .catch(()=>{
-      alert('Something went wrong....')
-    })
-  }
-
-  const handleImage=(e)=>{
-    setImage(URL.createObjectURL(e.target.files[0]))
-  }
+const handleImage=(e)=>{
+  const file = e.target.files[0]
+  setViewImg(URL.createObjectURL(file))
+}
 
   return (
     <div className='create-post'>
-   
-
-   <nav className='create-nav'>
-    <div>
-      {next===1 &&(
-       <a href="/">Cancel</a>
-      )}
-
-      {next ===2 &&(
-      <a onClick={()=>{setNext(1)}}>Back</a>
-      )}
-      
-    </div>
-
-    <div>
-      {next===1 &&(
-        <>
-      <div onClick={()=>{setNext(2)}}>
-      Next
+    <div className='create-nav'>
+     {value ===1 && (
+      <>
+      <div>
+        <a href="/">Cancel</a>
       </div>
+      
+      <div>
+        <b onClick={()=>setValue(2)} >Next</b>
+      </div>
+      </>
+     ) }
+      
+      {value === 2 && (
+        <>
+        <div>
+          <a onClick={()=>setValue(1)}>Back</a>
+        </div>
+        
         </>
       )}
+    </div>
+       
+    <div>
+       <form>
+         
+         {value === 1 && (
+         <>
+        <h2>Select Image</h2>
+        {viewImg && (
+          <img src={viewImg} style={{width:'200px' , borderRadius:'20px'}} />
+        ) }
+        <input type="file" name="image" onChange={handleImage}/>
+        </>
+        )}
+        
+        {value ===2 && (
+          <>
+           <h2>Enter Caption</h2>
+          <img src={viewImg} style={{width:'200px' , borderRadius:'20px'}}   />
+           
+           <input type="text" placeholder='Enter Caption...' />
+          <button type='submit'>Upload</button>
+          </>
+        )}
+
+       </form>
+
 
     </div>
 
 
 
-   </nav>
 
-   <form onSubmit={handleSubmit}  encType="multipart/form-data">
-    
-    {next===1 &&(
-       <>
-       <h3>Select Image</h3>
-       <img style={{width:'200px' , borderRadius:'20px'}} src={image} alt="" />
-      <input type="file" name='image' onChange={handleImage} />
-      </>
-    )}
-   
-    {next ===2 &&(
-      <>
-    <img style={{width:'200px' , borderRadius:'20px'}} src={image} alt="" />
-    <input type="text" name='caption' placeholder='Caption here..' />
-    <button type='submit'>Upload</button>
-    </>
-    )}
-
-   
-   </form>
-
-
-   <Footer/>
+    <Footer/>
     </div>
   )
 }
