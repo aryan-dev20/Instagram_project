@@ -1,15 +1,31 @@
 import React from 'react'
 import Footer from '../Components/Footer'
 import { useState } from 'react'
+import axios from 'axios'
 
 const CreatePost = () => {
 
 const [value , setValue]= useState(1)
 const [viewImg , setViewImg] = useState(null)
+const [image , SetImage] = useState(null)
+const [caption , SetCaption] = useState('')
+
+
+const formSubmit= async(e)=>{
+  e.preventDefault(); 
+  const formData = new FormData()
+  formData.append('image', image)
+  formData.append('caption' , caption)
+
+  await axios.post('http://localhost:3000/post' , formData)
+  alert('Post Uploaded Succesfully')
+}
+
 
 const handleImage=(e)=>{
   const file = e.target.files[0]
   setViewImg(URL.createObjectURL(file))
+  SetImage(file)
 }
 
   return (
@@ -38,7 +54,7 @@ const handleImage=(e)=>{
     </div>
        
     <div>
-       <form>
+       <form onSubmit={formSubmit} encType='multipart/form-data'>
          
          {value === 1 && (
          <>
@@ -55,7 +71,7 @@ const handleImage=(e)=>{
            <h2>Enter Caption</h2>
           <img src={viewImg} style={{width:'200px' , borderRadius:'20px'}}   />
            
-           <input type="text" placeholder='Enter Caption...' />
+           <input type="text" name='caption' placeholder='Enter Caption...' onChange={(e)=>{SetCaption(e.target.value)}} />
           <button type='submit'>Upload</button>
           </>
         )}
